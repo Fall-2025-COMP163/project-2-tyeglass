@@ -7,6 +7,7 @@ AI Usage: [Document any AI assistance used]
 Example: AI helped with inheritance structure and method overriding concepts
 """
 
+
 # ============================================================================
 # PROVIDED BATTLE SYSTEM (DO NOT MODIFY)
 # ============================================================================
@@ -16,32 +17,32 @@ class SimpleBattle:
     Simple battle system provided for you to test your characters.
     DO NOT MODIFY THIS CLASS - just use it to test your character implementations.
     """
-    
+
     def __init__(self, character1, character2):
         self.char1 = character1
         self.char2 = character2
-    
+
     def fight(self):
         """Simulates a simple battle between two characters"""
         print(f"\n=== BATTLE: {self.char1.name} vs {self.char2.name} ===")
-        
+
         # Show starting stats
         print("\nStarting Stats:")
         self.char1.display_stats()
         self.char2.display_stats()
-        
+
         print(f"\n--- Round 1 ---")
         print(f"{self.char1.name} attacks:")
         self.char1.attack(self.char2)
-        
+
         if self.char2.health > 0:
             print(f"\n{self.char2.name} attacks:")
             self.char2.attack(self.char1)
-        
+
         print(f"\n--- Battle Results ---")
         self.char1.display_stats()
         self.char2.display_stats()
-        
+
         if self.char1.health > self.char2.health:
             print(f"🏆 {self.char1.name} wins!")
         elif self.char2.health > self.char1.health:
@@ -49,103 +50,73 @@ class SimpleBattle:
         else:
             print("🤝 It's a tie!")
 
-# ============================================================================
-# YOUR CLASSES TO IMPLEMENT (6 CLASSES TOTAL)
-# ============================================================================
 
 class Character:
-    """
-    Base class for all characters.
-    This is the top of our inheritance hierarchy.
-    """
-    
+
     def __init__(self, name, health, strength, magic):
-        """Initialize basic character attributes"""
-        # TODO: Set the character's name, health, strength, and magic
-        # These should be stored as instance variables
-        pass
-        
-    def attack(self, target):
-        """
-        Basic attack method that all characters can use.
-        This method should:
-        1. Calculate damage based on strength
-        2. Apply damage to the target
-        3. Print what happened
-        """
-        # TODO: Implement basic attack
-        # Damage should be based on self.strength
-        # Use target.take_damage(damage) to apply damage
-        pass
-        
+        self.name = name
+        self.health = health
+        self.strength = strength
+        self.magic = magic  # so these are the instances it stores
+
+    def attack(self, target): #calls td and diff from warrior
+        damage = self.strength
+        target.take_damage(damage)
+        print(f'{self.name} attacks {target.name} for {damage} damage.')
+
     def take_damage(self, damage):
-        """
-        Reduces this character's health by the damage amount.
-        Health should never go below 0.
-        """
-        # TODO: Implement taking damage
-        # Reduce self.health by damage amount
-        # Make sure health doesn't go below 0
-        pass
-        
+        self.health -= damage  # self health - damage
+        if self.health < 0:
+            self.health = 0
+        print(f'{self.name} now has {self.health} health.')
+
     def display_stats(self):
-        """
-        Prints the character's current stats in a nice format.
-        """
-        # TODO: Print character's name, health, strength, and magic
-        # Make it look nice with formatting
-        pass
+        print(f'>)($)(< {self.name} STATS >)($)(<')
+        print(f'>)($)(< Health: {self.health:>5} >)($)(<')
+        print(f'>)($)(< Strength: {self.strength:>5} >)($)(<')
+        print(f'>)($)(< Magic: {self.magic:>5} >)($)(<')  #formats the character's stats
+
 
 class Player(Character):
-    """
-    Base class for player characters.
-    Inherits from Character and adds player-specific features.
-    """
-    
+
     def __init__(self, name, character_class, health, strength, magic):
-        """
-        Initialize a player character.
-        Should call the parent constructor and add player-specific attributes.
-        """
-        # TODO: Call super().__init__() with the basic character info
-        # TODO: Store the character_class (like "Warrior", "Mage", etc.)
-        # TODO: Add any other player-specific attributes (level, experience, etc.)
-        pass
-        
+        super().__init__(name, health, strength, magic)
+
+        self.character_class = character_class  #this stores character class
+        self.level = 1
+        self.experience = 0
+        #specific attributes to the player not from character
+
     def display_stats(self):
-        """
-        Override the parent's display_stats to show additional player info.
-        Should show everything the parent shows PLUS player-specific info.
-        """
-        # TODO: Call the parent's display_stats method using super()
-        # TODO: Then print additional player info like class and level
-        pass
+        super().display_stats()  # this calls the parent's display_stats
+        #so you dont repeat the code
+        print(f'Class: {self.character_class} * | * Level: {self.level} * | * Experience: {self.experience}')
+        # this prints player info
+
 
 class Warrior(Player):
-    """
-    Warrior class - strong physical fighter.
-    Inherits from Player.
-    """
-    
+
     def __init__(self, name):
-        """
-        Create a warrior with appropriate stats.
-        Warriors should have: high health, high strength, low magic
-        """
-        # TODO: Call super().__init__() with warrior-appropriate stats
-        # Suggested stats: health=120, strength=15, magic=5
-        pass
-        
-    def attack(self, target):
-        """
-        Override the basic attack to make it warrior-specific.
-        Warriors should do extra physical damage.
-        """
-        # TODO: Implement warrior attack
-        # Should do more damage than basic attack
-        # Maybe strength + 5 bonus damage?
-        pass
-        
+        Player.__init__(self, name, "Warrior", 120, 15, 5)
+
+    def attack(self, target): #redefined this is where it overrides
+        damage = self.strength + 5
+        print(f"{self.name} takes out his dagger and attacks {target.name} for {damage} damage.")
+        target.take_damage(damage)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     def power_strike(self, target):
         """
         Special warrior ability - a powerful attack that does extra damage.
