@@ -97,12 +97,12 @@ class Player(Character):
         print(f"Class: {self.character_class} | Level: {self.level} | EXP: {self.experience} | Weapon: {weapon_info}")
 
 
-class Warrior(Character):
+class Warrior(Player):
+
     def __init__(self, name):
-        super().__init__(name)
-        self.health = 120
-        self.strength = 15
-        self.magic = 5
+
+        super().__init__(name, "Warrior", health=120, strength=15, magic=5)
+
     def attack(self, target):
 
         base = self.strength + 5  # warrior bonus
@@ -120,12 +120,11 @@ class Warrior(Character):
         target.take_damage(damage)
 
 
-class Mage(Character):
+class Mage(Player):
+
     def __init__(self, name):
-        super().__init__(name)
-        self.health = 80
-        self.strength = 8
-        self.magic = 20
+
+        super().__init__(name, "Mage", health=80, strength=8, magic=20)
 
     def attack(self, target):
 
@@ -144,12 +143,12 @@ class Mage(Character):
         target.take_damage(damage)
 
 
-class Rogue(Character):
+class Rogue(Player):
+
     def __init__(self, name):
-        super().__init__(name)
-        self.health = 90
-        self.strength = 12
-        self.magic = 10
+
+        super().__init__(name, "Rogue", health=90, strength=12, magic=10)
+
     def attack(self, target):
 
         crit_roll = random.randint(1, 10)
@@ -242,3 +241,4 @@ if __name__ == "__main__":
     battle.fight()
 
     print("\n✅ Testing complete!")
+```
