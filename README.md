@@ -1,3 +1,69 @@
+!!!!Instructor Disclaimer
+I was unable to modify the project starter file I am not sure why, by the time this happened office hours were already closed. But I included my full Python implementation in the submission. All required code for my classes, abilities, and functionality appears correctly in the editable portion of the project and all tests cases pass!!!!
+
+
+COMP 163 – Project 2: Character Abilities Showcase
+README Documentation
+Overview
+
+This project demonstrates object-oriented programming concepts in Python, including:
+Inheritance
+Polymorphism
+Method overriding
+Composition (Players using Weapon objects)
+Class-based ability systems
+Interaction simulation via a simple battle engine
+
+The program defines a hierarchy of character classes—Warrior, Mage, and Rogue—each extending the base Player class, which itself inherits from Character.
+Each subclass overrides the attack() method and includes unique special abilities to highlight polymorphism and class specialization.
+
+A provided SimpleBattle system (included in the starter file) is used for testing but cannot be modified. Due to restrictions with the project starter, only the Python implementation portion is editable, which is the part provided in the submission.
+
+AI Usage: Chat GPT AI assistance was used for approximately 50% of this project, specifically to help clarify inheritance structure, refine method overriding logic, ReadMe files, generate explanatory comments, and verify behavior against GitHub test cases.
+
+How to Run the Program
+1. Ensure Python is Installed. You will need Python 3.8+.
+2. Run the Script Normally, Open a terminal or command prompt in the project directory and enter:
+python character_abilities.py
+
+3. What You Should See
+Running the program will automatically:Display the stats of all character types, Demonstrate polymorphic attacks from Warrior, Mage, and Rogue, Demonstrate each class’s special ability, Display weapon information, Run a sample battle using the provided SimpleBattle system, Print the final results of the test showcase
+No additional input is required—this project is fully automated for demonstration.
+
+Core Concepts Demonstrated
+✔ Inheritance
+- Player inherits from Character
+- Warrior, Mage, and Rogue inherit from Player
+✔ Polymorphism & Method Overriding
+Each subclass overrides attack() to use different damage formulas:
+- Warrior: Strength-based melee damage
+- Mage: Magic-based spell damage
+- Rogue: Chance-based critical strikes
+✔ Special Class Abilities
+- Warrior.power_strike()
+- Mage.fireball()
+- Rogue.sneak_attack()
+✔ Composition
+
+Testing Notes
+- The provided SimpleBattle system cannot be modified (as per assignment rules).
+- All implemented classes meet the inheritance and overriding requirements used by the GitHub test cases.
+- Only the implementable Python portions were supplied in the submission due to starter-code editing restrictions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/mMxhKicI)
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=21493007&assignment_repo_type=AssignmentRepo)
 # COMP 163 - Project 2: Character Abilities Showcase
